@@ -25,4 +25,13 @@ public class HotelService {
     public Hotel guardarHotel(Hotel hotel){
         return hotelRepository.save(hotel);
     }
+
+    public Boolean borrarHotel(int id) {
+        try {
+            hotelRepository.borrarHotel(id);
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

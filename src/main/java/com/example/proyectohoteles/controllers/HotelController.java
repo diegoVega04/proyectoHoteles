@@ -22,7 +22,7 @@ public class HotelController {
         try {
             return hotelService.findAllHoteles();
         } catch (Exception e) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error al obtener todos los agricultores", e);
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Error al obtener todos los hoteles", e);
         }
     }
 
@@ -32,10 +32,19 @@ public class HotelController {
     }
 
     @PostMapping("guardar")
-    public ResponseEntity<?> createAgricultor(@RequestBody Hotel hotel) {
+    public ResponseEntity<?> createHotel(@RequestBody Hotel hotel) {
         hotelService.guardarHotel(hotel);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
-
+    @DeleteMapping("borrar/{id}")
+    public ResponseEntity<String> borrarHotel(@PathVariable int id) {
+        boolean resultado = hotelService.borrarHotel(id);
+        if (resultado) {
+            return ResponseEntity.ok("Hotel eliminado exitosamente");
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Hotel no encontrado");
+        }
+    }
 }
