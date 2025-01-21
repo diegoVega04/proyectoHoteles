@@ -1,9 +1,7 @@
 package com.example.proyectohoteles.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
@@ -37,7 +35,7 @@ public class Hotel {
     private String localidad;
 
     @OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
-    @JsonBackReference
+    @JsonManagedReference
     private List<Habitacion> habitaciones;
 
 

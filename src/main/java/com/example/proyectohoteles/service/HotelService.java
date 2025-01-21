@@ -28,8 +28,10 @@ public class HotelService {
 
     public Boolean borrarHotel(int id) {
         try {
-            hotelRepository.borrarHotel(id);
-            return true;
+            if (hotelRepository.existsById(id)) {
+                hotelRepository.deleteById(id);
+                return true;
+            } else {return false;}
         } catch (Exception e) {
             return false;
         }
