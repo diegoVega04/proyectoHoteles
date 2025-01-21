@@ -1,6 +1,8 @@
 package com.example.proyectohoteles.controllers;
 
+import com.example.proyectohoteles.entities.Habitacion;
 import com.example.proyectohoteles.entities.Hotel;
+import com.example.proyectohoteles.service.HabitacionService;
 import com.example.proyectohoteles.service.HotelService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,10 +13,13 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/hotel")
-public class HotelController {
+public class Controller {
     private final HotelService hotelService;
-    public HotelController(HotelService hotelService) {
+    private final HabitacionService habitacionService;
+
+    public Controller(HotelService hotelService, HabitacionService habitacionService) {
         this.hotelService = hotelService;
+        this.habitacionService = habitacionService;
     }
 
     @GetMapping("/")
@@ -46,5 +51,10 @@ public class HotelController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
                     .body("Hotel no encontrado");
         }
+    }
+
+    @GetMapping("/{hotel_id}/habitaciones")
+    public ResponseEntity<List<Habitacion>> habitaciones(@PathVariable int hotel_id) {
+        return habitacionService.findHabitacionesByHotel(hotel_id);
     }
 }
