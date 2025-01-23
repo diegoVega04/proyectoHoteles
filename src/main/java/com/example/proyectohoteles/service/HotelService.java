@@ -1,5 +1,6 @@
 package com.example.proyectohoteles.service;
 
+import com.example.proyectohoteles.entities.Habitacion;
 import com.example.proyectohoteles.entities.Hotel;
 import com.example.proyectohoteles.repository.HotelRepository;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,8 @@ public class HotelService {
         return hotelRepository.findHotelesByLocalidad(localidad);
     }
 
-    public List<Hotel>findAllHoteles() {
-        return hotelRepository.findAll();
+    public List<Hotel> findHotelesByCategoria (String categoria) {
+        return hotelRepository.findHotelesByCategoria(categoria);
     }
 
     public Hotel guardarHotel(Hotel hotel){

@@ -13,20 +13,20 @@ public class HabitacionService {
     private final HabitacionRepository habitacionRepository;
     public HabitacionService(HabitacionRepository habitacionRepository) {this.habitacionRepository = habitacionRepository;}
 
-    public List<Habitacion> findAllHabitaciones(){
-        return habitacionRepository.findAll();
+    public Habitacion guardarHabitacion(Habitacion habitacion){
+        return habitacionRepository.save(habitacion);
     }
 
     public Habitacion findHabitacionById(int id){
         return habitacionRepository.findHabitacionById(id);
     }
 
-    public List<Habitacion> findHabitacionesByHotel(int hotel_id){
-        return habitacionRepository.findHabitacionesByHotel(hotel_id);
+    public List<Habitacion> buscarHabitaciones(int id_hotel, Habitacion.Tamano tamano, Double precio_min, Double precio_max) {
+        return habitacionRepository.buscarHabitaciones(id_hotel, tamano, precio_min, precio_max);
     }
 
-    public List<Habitacion> findHabitacionesByLocalidad(String localidad){
-        return habitacionRepository.findHabitacionesByLocalidad(localidad);
+    public void borrarHabitacion(int id) {
+        habitacionRepository.deleteById(id);
     }
 
     @Transactional
