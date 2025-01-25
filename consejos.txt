@@ -1,0 +1,3 @@
+copiar pegar del pom las dependencias, la parte de parent y la version de java
+copiar la clase de seguridad
+la clase de user tambien se puede copiar si no los pillas de una BBDD
