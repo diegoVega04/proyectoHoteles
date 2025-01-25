@@ -1,19 +1,17 @@
-package es.softtek.jwtDemo.controller;
+package com.example.proyectohoteles.controllers;
+import com.example.proyectohoteles.entities.User;
 
-import java.util.Date;
-import java.util.List;
-import java.util.stream.Collectors;
-
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import es.softtek.jwtDemo.dto.User;
-import io.jsonwebtoken.Jwts;
-import io.jsonwebtoken.SignatureAlgorithm;
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 public class UserController {

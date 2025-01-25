@@ -1,9 +1,9 @@
 package com.example.proyectohoteles.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
+import javax.persistence.*;
+import static javax.persistence.GenerationType.IDENTITY;
 
-import static jakarta.persistence.GenerationType.IDENTITY;
 
 @Entity
 @Table(name = "habitaciones")

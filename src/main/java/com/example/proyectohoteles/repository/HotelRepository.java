@@ -1,6 +1,5 @@
 package com.example.proyectohoteles.repository;
 
-import com.example.proyectohoteles.entities.Habitacion;
 import com.example.proyectohoteles.entities.Hotel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

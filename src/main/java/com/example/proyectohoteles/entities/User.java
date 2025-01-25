@@ -1,4 +1,4 @@
-package es.softtek.jwtDemo.dto;
+package com.example.proyectohoteles.entities;
 
 public class User {
 

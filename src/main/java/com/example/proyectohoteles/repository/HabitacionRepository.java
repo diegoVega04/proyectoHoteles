@@ -10,14 +10,7 @@ import java.util.List;
 
 public interface HabitacionRepository  extends JpaRepository<Habitacion, Integer> {
 
-    @Query("""
-    SELECT h 
-    FROM Habitacion h 
-    WHERE h.hotel.id = :id_hotel
-    AND (:tamano IS NULL OR h.tamano = :tamano)
-    AND (:precio_min IS NULL OR h.precio_noche >= :precio_min)
-    AND (:precio_max IS NULL OR h.precio_noche <= :precio_max)
-    """)
+    @Query("SELECT h FROM Habitacion h WHERE h.hotel.id = :id_hotel AND (:tamano IS NULL OR h.tamano = :tamano) AND (:precio_min IS NULL OR h.precio_noche >= :precio_min) AND (:precio_max IS NULL OR h.precio_noche <= :precio_max)")
     List<Habitacion> buscarHabitaciones(
             @Param("id_hotel") int id_hotel,
             @Param("tamano") Habitacion.Tamano tamano,

@@ -12,12 +12,17 @@ import org.springframework.web.server.ResponseStatusException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/hotel")
+@RequestMapping("/hoteles")
 public class HotelController {
     private final HotelService hotelService;
     private final HabitacionService habitacionService;
 
     public HotelController(HotelService hotelService, HabitacionService habitacionService) {this.hotelService = hotelService; this.habitacionService = habitacionService;}
+
+    @GetMapping("/")
+    public ResponseEntity<List<Hotel>> findAllHoteles(){
+        return ResponseEntity.ok(hotelService.findAllHoteles());
+    }
 
     @GetMapping("localidad/{localidad}")
     public ResponseEntity<List<Hotel>> getHotelesLocalidad(@PathVariable String localidad) {
