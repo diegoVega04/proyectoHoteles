@@ -4,6 +4,10 @@ import com.example.proyectohoteles.entities.Habitacion;
 import com.example.proyectohoteles.entities.Hotel;
 import com.example.proyectohoteles.service.HabitacionService;
 import com.example.proyectohoteles.service.HotelService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/hoteles")
+@Tag(name = "Hoteles y habitaciones", description = "Catalogo de hoteles y sus habitaciones")
 public class HotelController {
     private final HotelService hotelService;
     private final HabitacionService habitacionService;
@@ -20,6 +25,12 @@ public class HotelController {
     public HotelController(HotelService hotelService, HabitacionService habitacionService) {this.hotelService = hotelService; this.habitacionService = habitacionService;}
 
     @GetMapping("/")
+    @Operation(summary = "Obtener todos los hoteles", description = "Obtiene una lista de todos los hoteles")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Lista de hoteles obtenida exitosamente"),
+            @ApiResponse(responseCode = "400", description = "Solicitud incorrecta"),
+            @ApiResponse(responseCode = "404", description = "No se encontraron hoteles")
+    })
     public ResponseEntity<List<Hotel>> findAllHoteles(){
         return ResponseEntity.ok(hotelService.findAllHoteles());
     }

@@ -27,6 +27,7 @@ public class ProyectoHotelesApplication {
 					.addFilterAfter(new JWTAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
 					.authorizeRequests()
 					.antMatchers(HttpMethod.POST, "/user").permitAll()
+					.antMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
 					.antMatchers("/hoteles/", "/hoteles/localidad/**", "/hoteles/categoria/**", "/hoteles/{id_hotel}/habitaciones").permitAll()
 					.anyRequest().authenticated();
 		}
